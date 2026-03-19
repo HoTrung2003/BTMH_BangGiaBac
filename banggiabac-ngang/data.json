@@ -1,0 +1,58 @@
+[
+  {
+    "LoaiBacThuongPham": "Ngân Gia Bảo",
+    "BoSuuTap": "Tứ quý CN 1 lượng (Tùng, Cúc, Trúc, Mai)",
+    "DonViTinh": "Lượng",
+    "HamLuong": 999.0,
+    "DonGiaMua": 7000,
+    "DonGiaBan": 3000
+  },
+  {
+    "LoaiBacThuongPham": "Ngân Gia Bảo",
+    "BoSuuTap": "Tứ quý CN 3 lượng (Tùng, Cúc, Trúc, Mai)",
+    "DonViTinh": "Lượng",
+    "HamLuong": 999.0,
+    "DonGiaMua": 1600,
+    "DonGiaBan": 1500
+  },
+  {
+    "LoaiBacThuongPham": "Ngân Gia Bảo",
+    "BoSuuTap": "Thỏi 5 lượng",
+    "DonViTinh": "Lượng",
+    "HamLuong": 999.0,
+    "DonGiaMua": 1000,
+    "DonGiaBan": 1000
+  },
+  {
+    "LoaiBacThuongPham": "Ngân Gia Bảo",
+    "BoSuuTap": "Thỏi 10 lượng",
+    "DonViTinh": "Lượng",
+    "HamLuong": 999.0,
+    "DonGiaMua": 1000,
+    "DonGiaBan": 1000
+  },
+  {
+    "LoaiBacThuongPham": "Ngân Gia Bảo",
+    "BoSuuTap": "Thỏi 1 kilô",
+    "DonViTinh": "Kilogam",
+    "HamLuong": 999.0,
+    "DonGiaMua": 1000,
+    "DonGiaBan": 1000
+  },
+  {
+    "LoaiBacThuongPham": "Nguyên liệu",
+    "BoSuuTap": "",
+    "DonViTinh": "Lượng",
+    "HamLuong": 999.0,
+    "DonGiaMua": 1000,
+    "DonGiaBan": 0
+  },
+  {
+    "LoaiBacThuongPham": "Nguyên liệu",
+    "BoSuuTap": "",
+    "DonViTinh": "Kilogam",
+    "HamLuong": 999.0,
+    "DonGiaMua": 1000,
+    "DonGiaBan": 0
+  }
+]

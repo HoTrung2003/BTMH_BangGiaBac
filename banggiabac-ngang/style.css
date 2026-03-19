@@ -1,0 +1,380 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1.05vw;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: url("./images/nen do 2026 final.png") no-repeat center center
+    fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.container {
+  width: 98%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.header {
+  margin-top: 0.5rem;
+  padding: 0;
+  text-align: center;
+}
+
+
+
+.logo {
+  max-width: 42%;
+  width: 100%;
+  height: auto;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #d4af37;
+  padding-left: 5.5rem;
+  background-color: transparent;
+  border-radius: 0.25rem;
+}
+
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; 
+  border-radius: 2px;
+}
+
+.header-top-row .logo {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 30%;
+  flex-shrink: 0;
+}
+
+
+
+.page-title-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.header-top-row .title-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: auto;
+  max-width: 60%;
+  margin: 0;
+}
+
+.title-image-wrapper img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+
+}
+
+.header-top-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+}
+
+.unit-note-container {
+  width: 100%;
+  text-align: right;
+  padding-right: 3rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.unit-note-container p {
+  font-size: 1.5rem;
+  color: #f6e7db;
+  font-style: italic;
+  margin: 0;
+}
+
+.main-content {
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+.tables-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse; 
+  background-color: transparent;
+}
+
+.price-table,
+.price-table-header,
+.price-table-body {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.price-table-body {
+  background: transparent;
+}
+
+.price-table-header {
+  margin-bottom: 0;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.price-table-header thead tr {
+  display: table-row;
+  background: url("images/thanh tieu de.png") no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.price-table-header thead th {
+  padding: 0.40rem 1.25rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.56rem;
+  color: #880203;
+  box-shadow: none;
+  border-radius: 0;
+  letter-spacing: 0.0625rem;
+  background: transparent;
+}
+
+.price-table-header thead th:nth-child(1) {
+  width: 20.65%;
+}
+
+.price-table-header thead th:nth-child(2) {
+  width: 17.54%;
+}
+
+.price-table-header thead th:nth-child(3) {
+  width: 14.99%;
+}
+
+.price-table-header thead th:nth-child(4) {
+  width: 12.56%;
+}
+
+.price-table-header thead th:nth-child(5) {
+  width: 15.73%;
+}
+.price-table-header thead th:nth-child(6) {
+  width: 18.56%;
+}
+
+.price-table-body tbody tr {
+  border-bottom: 1px solid #d4af37;
+  color: #fff;
+}
+
+.price-table-body tbody tr:last-child {
+  border-bottom: none;
+}
+
+.price-table-body td {
+  padding: 0.70rem 1.5625rem;
+  text-align: left;
+  font-size: 1.62rem;
+  font-weight: bold;
+  color: #f6e7db;
+}
+
+.price-table-body td:nth-child(1) {
+  width: 20.65%;
+}
+
+.price-table-body td:nth-child(2) {
+  width: 17.54%;
+}
+
+.price-table-body td:nth-child(3) {
+  width: 14.99%;
+}
+
+.price-table-body td:nth-child(4) {
+  width: 12.56%;
+}
+
+.price-table-body td:nth-child(5) {
+  width: 15.73%;
+}
+.price-table-body td:nth-child(6) {
+  width: 18.56%;
+}
+
+.price-table-header thead th,
+.price-table-body td {
+  overflow-wrap: anywhere;
+}
+
+.price-table .category {
+  font-weight: bold;
+  font-size: 2.4vw;
+  color: #f6e7db;
+  min-width: 12rem;
+  width: 12rem;
+  transition: all 0.3s ease;
+  text-align: left; 
+}
+
+.price-table .price {
+  text-align: right;
+  min-width: 120px;
+  font-weight: bold;
+  color: #f6e7db;
+  font-size: 1.62rem;
+}
+
+.category-row {
+  background: transparent;
+}
+
+.category-row td {
+  padding: 0.81rem 1.5625rem;
+  vertical-align: middle;
+  color: #f6e7db;
+}
+.table-scroll {
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .header-top-row {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .header-top-row .logo {
+    max-width: 70%;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .header-top-row .title-image-wrapper {
+    max-width: 95%;
+  }
+
+  .unit-note-container {
+    text-align: center;
+    padding-right: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .unit-note-container p {
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 0;
+  }
+
+  .price-table-header thead th,
+  .price-table-body td,
+  .price-table .category,
+  .price-table .price {
+    font-size: 0.95rem; 
+    padding: 0.6rem 0.4rem;
+    white-space: nowrap; 
+  }
+
+  .price-table-header thead th {
+    white-space: normal !important;
+    line-height: 1.2;
+    vertical-align: middle;
+  }
+
+  .price-table-header,
+  .price-table-body {
+    min-width: 1000px; 
+  }
+
+  .price-table-header thead th:nth-child(1),
+  .price-table-body td:nth-child(1),
+  .price-table .category {
+    width: 20.65% !important;
+    min-width: 150px;
+    white-space: normal !important;
+  }
+
+  .price-table-header thead th:nth-child(2),
+  .price-table-body td:nth-child(2) {
+    width: 17.54% !important;
+    min-width: 200px;
+  }
+
+  .price-table-header thead th:nth-child(3),
+  .price-table-body td:nth-child(3) {
+    width: 14.99% !important;
+    min-width: 120px;
+  }
+
+  .price-table-header thead th:nth-child(4),
+  .price-table-body td:nth-child(4)Ơ {
+    width: 12.56% !important;
+    min-width: 100px;
+  }
+
+  .price-table-header thead th:nth-child(5),
+  .price-table-body td:nth-child(5){
+    width: 15.73% !important;
+    min-width: 120px;
+  }
+
+  .price-table-header thead th:nth-child(6),
+  .price-table-body td:nth-child(6) {
+    width: 18.56% !important;
+    min-width: 140px;
+  }
+  
+  .category-row td {
+      padding: 0.6rem 0.4rem;
+  }
+}
+@media (min-width: 1920px) {
+  html {
+  font-size: 1.05vw;
+  }  }
+  .logo img {
+  height: clamp(90px, 8vh, 160px);
+  width: auto;
+}
+.title-image-wrapper img {
+  height: clamp(100px, 10vh, 200px);
+  width: auto;
+}
