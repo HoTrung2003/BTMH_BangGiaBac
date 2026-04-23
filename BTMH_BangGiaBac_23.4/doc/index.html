@@ -108,7 +108,7 @@
       vertical-align: middle;
       line-height: 1.35;
       font-size: 1.4vh;
-      padding: 1vh 1vw;
+      padding: 0.5vh 0.5vw;
       background: #2b6e6e;
       background-clip: padding-box;
       border-right: 4px solid transparent;
@@ -140,7 +140,7 @@
       border: none;
       vertical-align: middle;
       font-size: 1.6vh;
-      padding: 1.0vh 1.0vw;
+      padding: 0.5vh 0.5vw;
       color: #2b575e;
       border-right: 4px solid transparent;
       background-clip: border-box;
@@ -189,29 +189,19 @@
       font-size: 2.0vh !important;
     }
 
-    /* ===== BANNER: chiếm toàn bộ chiều cao còn lại ===== */
+    /* ===== BANNER: full width, height theo tỉ lệ ảnh ===== */
     .bgb-banner {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      overflow: hidden;
+      width: 100vw;
       margin-left: -3vw;
       margin-right: -3vw;
-      width: 100vw;
-      max-width: 100vw;
-      margin-top: 1vh;
+      margin-top-min: 1vh;
+      margin-top:auto;
+      flex-shrink: 0;
+      line-height: 0;
     }
 
     .bgb-banner img {
-      /* Hiện toàn bộ ảnh giữ tỉ lệ:
-         - max-width: 100% → không vượt chiều ngang màn hình
-         - max-height: 100% → không vượt chiều cao còn lại
-         - width/height auto → tự tính theo tỉ lệ gốc để không bị bóp méo */
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
+      width: 100%;
       height: auto;
       display: block;
     }
@@ -291,7 +281,7 @@
       </table>
     </div>
 
-    <!-- Banner: co theo chiều cao còn lại -->
+    <!-- Banner: full width, height tự theo tỉ lệ ảnh -->
     <div class="bgb-banner">
       <img src="https://www.dropbox.com/scl/fi/bvvyod5wbm1m3aweedxgr/banner_banggiabac_doc.png?rlkey=f27agpeqlaxd8k54o89gblvyq&st=31ud1lzw&dl=1" alt="Banner">
     </div>
