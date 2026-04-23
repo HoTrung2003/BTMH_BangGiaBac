@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Giá Bạc - Bao Tin Manh Hai</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: black;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Tránh hiện thanh cuộn khi xoay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* 
+       PHẦN XOAY 90 ĐỘ SANG TRÁI 
+       Để quay về bản dọc bình thường (đầu trên), hãy comment đoạn transform bên dưới 
+       và đổi width thành 100%, height thành auto
+    */
+    .main-container { 
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100vh; 
+      height: 100vw; 
+      
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+      justify-content: center;
+      padding: 2vh 2vw; /* Giảm padding để bảng rộng ra */
+
+      transform: translate(-50%, -50%) rotate(-90deg);
+      transform-origin: center center;
+
+      background-image: url("background_banggiabac_doc.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* ===== HEADER ===== */
+    /* HEADER — Đầu bảng */
+    .bgb-header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2vh;
+      margin-bottom: 2vh;
+    }
+
+    .bgb-logo-box {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bgb-logo-box img {
+      width: auto;
+      height: clamp(7vh,12vh,17vh);
+    }
+
+    .bgb-title-block {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bgb-title img {
+      width: auto;
+      height: clamp(7vh,10vh,14vh);
+    }
+
+    .bgb-subtitle {
+      font-size: clamp(13px, 1.4vw, 26px);
+      font-style: italic;
+      color: #444;
+      margin-top: 0.5vh;
+      font-weight: 500;
+    }
+
+    /* ===== TABLE WRAPPER ===== */
+    .table-wrap { width: 100%; }
+
+    /*
+     * THEAD — dùng border-collapse: separate + border-spacing
+     * để tạo 10px gap giữa các ô tiêu đề (chỉ header)
+     */
+    .tbl-head {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: transparent;
+    }
+
+    .tbl-head th {
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border: none;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1.35;
+      font-size: clamp(20px, 1.7vw, 40px);
+      padding: clamp(20px, 3vh, 55px) clamp(10px, 1.2vw, 24px);
+      background: #2b6e6e;
+      background-clip: padding-box;
+      border-right: 6px solid transparent;
+    }
+
+    .tbl-head th:last-child {
+      border-right: none !important;
+    }
+
+    .tbl-body {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .tbl-body tbody tr:nth-child(even)  { background: rgba(255,255,255,0.65); }
+    .tbl-body tbody tr:nth-child(odd) { background: rgba(255,255,255,0.35); }
+
+    .tbl-body tbody tr.footer-row { background: rgba(255,255,255,0.5); }
+
+    .tbl-body tbody tr.footer-row td {
+      /* Bỏ border-top cũ */
+    }
+
+    /* Hàng khoảng trắng 6px giữa nhóm */
+    .tbl-body tbody tr.gap-row td {
+      background: transparent !important;
+      height: 6px;
+      padding: 0 !important;
+    }
+
+    .tbl-body tbody td {
+      border: none;
+      vertical-align: middle;
+      font-size: clamp(18px, 2.2vw, 38px);
+      padding: clamp(20px, 3.5vh, 55px) clamp(10px, 1.2vw, 24px);
+      color: #2b575e;
+      border-right: 6px solid transparent;
+      background-clip: border-box;
+    }
+
+    .tbl-body tbody td:last-child {
+      border-right: none !important;
+    }
+
+    /* ===== ID / CLASS CỘT ===== */
+
+    /* THEAD widths — 4 Cột */
+    #th-loai     { text-align: center;  width: 40%; }
+    #th-donvi    { text-align: center; width: 26%; }
+    #th-muavao   { text-align: center; width: 17%; }
+    #th-banra    { text-align: center; width: 17%; }
+
+    #col-loai-rowspan { width: 40%; }
+    #col-loai-single  { width: 40%; }
+    .col-don-vi       { width: 26%; }
+    .col-mua-vao      { width: 17%; }
+    .col-ban-ra       { width: 17%; }
+
+    #col-loai-rowspan {
+      text-align: left;
+      padding-left: 3vw;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      background: rgba(255,255,255,0.5) !important;
+      font-size: clamp(16px, 2.2vw, 36px);
+    }
+
+    #col-loai-single {
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      text-align: left;
+      padding-left: 3vw !important;
+      font-size: clamp(16px, 2vw, 32px);
+    }
+
+    .sub-title {
+      display: block;
+      font-weight: 500;
+      font-size: 0.8em;
+      color: #2b6e6e;
+    }
+
+    /* CỘT 2 — Bộ sưu tập */
+    .col-bo-suu-tap {
+      text-align: left;
+      font-weight: 600;
+      padding-left: clamp(20px, 2vw, 40px) !important; 
+      line-height: 1.45;
+      font-size: clamp(12px, 1.5vw, 28px);
+    }
+    .col-bo-suu-tap .sub {
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .col-don-vi { 
+      text-align: center;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .col-don-vi .ham-luong {
+      display: block;
+      font-weight: 400;
+      font-size: 0.85em;
+      color: #2b6e6e;
+    }
+
+    /* CỘT 4 — Hàm lượng */
+    .col-ham-luong { 
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .col-mua-vao {
+      text-align: center;
+      font-weight: 700;
+      font-size: clamp(20px, 2.5vw, 42px);
+    }
+    .col-ban-ra { 
+      text-align: center;
+      font-weight: 700;
+      font-size: clamp(20px, 2.5vw, 42px);
+    }
+
+    /* Banner cuối bảng - Tràn lề 2 bên */
+    .bgb-banner {
+      width: calc(100% + 4vw); /* Cộng thêm phần padding 2vw x 2 của container */
+      margin-left: -2vw;      /* Kéo sang trái bù padding */
+      margin-right: -2vw;     /* Kéo sang phải bù padding */
+      margin-top: 3vh;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .bgb-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+
+    <!-- HEADER -->
+    <div class="bgb-header">
+      <div class="bgb-logo-box">
+        <img
+          src="https://dl.dropbox.com/scl/fi/770ur1141k1z9xax36blo/logo__1_-removebg-preview.png?rlkey=se5p9v84vvk64bvrlkah5gft1&st=44nx30s4&dl=0"
+          alt="Bao Tin Manh Hai Logo"
+        />
+      </div>
+      <div class="bgb-title-block">
+        <div class="bgb-title">
+          <img src="https://www.dropbox.com/scl/fi/h0ad1h4rzr0m9sgvvxos6/B-ng_gi-_b-c-01-removebg-preview.png?rlkey=rmi9mep5gssxbj0m0admipeww&st=xhdaw5r2&dl=1" alt="Bảng Giá Bạc">
+        </div>
+        <div class="bgb-subtitle">Đơn vị tính: nghìn đồng/chỉ</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+
+      <!-- THEAD riêng: có gap 10px giữa các cột tiêu đề -->
+      <table class="tbl-head">
+        <thead>
+          <tr>
+            <th id="th-loai">Loại bạc</th>
+            <th id="th-donvi">Đơn vị / Hàm lượng</th>
+            <th id="th-muavao">Mua vào</th>
+            <th id="th-banra">Bán ra</th>
+          </tr>
+        </thead>
+      </table>
+
+      <!-- TBODY riêng: collapse bình thường, dữ liệu liền nhau -->
+      <table class="tbl-body">
+        <tbody>
+
+          <tr>
+            <td id="col-loai-single">Bạc Ngân Gia Bảo<br>Tứ Quý 1 lượng</td>
+            <td class="col-don-vi">1 lượng<br><span class="ham-luong">Bạc 999.0</span></td>
+            <td class="col-mua-vao">18.020</td>
+            <td class="col-ban-ra">18.020</td>
+          </tr>
+
+          <tr>
+            <td id="col-loai-single">Bạc Ngân Gia Bảo<br>Tứ Quý 3 lượng</td>
+            <td class="col-don-vi">1 lượng<br><span class="ham-luong">Bạc 999.0</span></td>
+            <td class="col-mua-vao">18.020</td>
+            <td class="col-ban-ra">18.020</td>
+          </tr>
+
+          <tr>
+            <td id="col-loai-single">Bạc Ngân Gia Bảo<br>Tứ Quý 5 lượng</td>
+            <td class="col-don-vi">1 lượng<br><span class="ham-luong">Bạc 999.0</span></td>
+            <td class="col-mua-vao">18.020</td>
+            <td class="col-ban-ra">18.020</td>
+          </tr>
+
+          <tr>
+            <td id="col-loai-single">Bạc Ngân Gia Bảo<br>Tứ Quý 10 lượng</td>
+            <td class="col-don-vi">1 lượng<br><span class="ham-luong">Bạc 999.0</span></td>
+            <td class="col-mua-vao">18.020</td>
+            <td class="col-ban-ra">18.020</td>
+          </tr>
+
+          <tr>
+            <td id="col-loai-single">Bạc Nguyên liệu</td>
+            <td class="col-don-vi"><span class="ham-luong">Bạc 999.0</span></td>
+            <td class="col-mua-vao">18.020</td>
+            <td class="col-ban-ra">18.020</td>
+          </tr>
+
+          <tr class="footer-row">
+            <td id="col-loai-single">BẠC NGUYÊN LIỆU</td>
+            <td class="col-don-vi"><span class="ham-luong">Bạc 999.0</span></td>
+            <td class="col-mua-vao">18.020</td>
+            <td class="col-ban-ra"></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <!-- Banner cuối bảng giá -->
+      <div class="bgb-banner">
+        <img src="https://www.dropbox.com/scl/fi/bvvyod5wbm1m3aweedxgr/banner_banggiabac_doc.png?rlkey=f27agpeqlaxd8k54o89gblvyq&st=31ud1lzw&dl=1" alt="Banner">
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
