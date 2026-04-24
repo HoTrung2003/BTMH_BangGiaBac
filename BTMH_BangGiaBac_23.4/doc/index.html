@@ -194,16 +194,18 @@
       width: 100vw;
       margin-left: -3vw;
       margin-right: -3vw;
-      margin-top-min: 1vh;
       margin-top:auto;
       flex-shrink: 0;
       line-height: 0;
     }
 
     .bgb-banner img {
+      margin-top:1vh;
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
+      /* Bóp méo tự do theo chiều cao còn lại */
+      object-fit: fill;
     }
   </style>
 </head>
@@ -281,11 +283,27 @@
       </table>
     </div>
 
-    <!-- Banner: full width, height tự theo tỉ lệ ảnh -->
     <div class="bgb-banner">
       <img src="https://www.dropbox.com/scl/fi/bvvyod5wbm1m3aweedxgr/banner_banggiabac_doc.png?rlkey=f27agpeqlaxd8k54o89gblvyq&st=31ud1lzw&dl=1" alt="Banner">
     </div>
 
   </div>
+
+  <script>
+    function fitBanner() {
+      const container = document.querySelector('.main-container');
+      const banner = document.querySelector('.bgb-banner');
+      const header = document.querySelector('.bgb-header');
+      const tableWrap = document.querySelector('.table-wrap');
+
+      banner.style.height = '0px';
+      const used = header.offsetHeight + tableWrap.offsetHeight;
+      const remaining = container.clientHeight - used;
+      banner.style.height = Math.max(0, remaining) + 'px';
+    }
+
+    fitBanner();
+    window.addEventListener('resize', fitBanner);
+  </script>
 </body>
 </html>
